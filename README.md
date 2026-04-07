@@ -25,17 +25,17 @@ pip install numpy librosa tensorflow scikit-learn matplotlib ipython
 ---
 
 ## 📂 Dataset Structure
-
-The model expects a specific directory structure for your audio dataset. Create a root folder named `Audio_Files` in the same directory as the notebook, containing two subfolders for major and minor audio tracks (`.wav` format):
+This project uses the Musical Instrument Chord Classification (Audio) dataset.
+The model expects a specific directory structure for the audio dataset. Create a root folder named Audio_Files in the same directory as the notebook, containing the two subfolders for major and minor audio tracks (.wav format):
 
 ```text
-├── 22112027_DL_CIA.ipynb
+├── Melody_generation.ipynb
 └── Audio_Files/
-    ├── major/
+    ├── Major/
     │   ├── Major_1.wav
     │   ├── Major_2.wav
     │   └── ...
-    └── minor/
+    └── Minor/
         ├── Minor_1.wav
         ├── Minor_2.wav
         └── ...
@@ -60,16 +60,17 @@ The model is compiled using the `adam` optimizer and evaluates Mean Squared Erro
 
 ## ⚙️ How to Use
 
-1. **Clone the Repository:** Download the `.ipynb` file to your local machine.
-2. **Prepare the Data:** Set up the `Audio_Files` directory with your own `.wav` files as shown in the Dataset Structure section. 
-3. **Run the Notebook:** Execute the cells in order. The notebook will:
+1. **Clone the Repository:** Download the `.ipynb` file.
+2. **Download the Dataset:** Download the dataset from Kaggle (https://www.kaggle.com/datasets/deepcontractor/musical-instrument-chord-classification).
+3. Extract the Audio_Files folder and place it in the same directory as the notebook, ensuring it contains the Major and Minor subdirectories.
+
+4. **Run the Notebook:** Execute the cells in order. The notebook will:
    * Load and preprocess the audio files.
    * Create sliding window sequences (length of 30 frames).
    * Train the LSTM model.
    * Save the trained weights as `melody_generator_model.h5`.
    * Evaluate the model using MSE and $R^2$ scores.
-4. **Generate Audio:** The final cells take a "seed" `.wav` file (e.g., `Major_8.wav`), extract its initial MFCCs, and prompt the model to generate the next 100 frames. The output can be listened to directly within the Jupyter Notebook interface!
-
+5. **Generate Audio:** The final cells take a "seed" `.wav` file (e.g., `Major_8.wav`), extract its initial MFCCs, and prompt the model to generate the next 100 frames. The output can be listened to directly within the Jupyter Notebook interface.
 ---
 
 ## 📊 Evaluation
